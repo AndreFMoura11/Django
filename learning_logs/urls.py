@@ -6,7 +6,6 @@ from . import views
 urlpatterns = [
     path('',views.index, name='index'),
     path('topics',views.topics, name='topics'),
-    path('topic',views.topic, name='topic'),
+    #path('topic//',views.topic, name='topic'),
 ]
 
- 

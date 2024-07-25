@@ -1,0 +1,22 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+    <h3>Tópico: {{ topic }}</h3>
+
+    <p>Entradas:</p>
+    <ul>
+        {% for entry in entries %}
+        <li>
+            <p>{{ entry.date_added | date:'M d, Y H:i'}}</p> <!-- piperline mais uma teclaq n tem no teclado , serve para pegar a informaçao e formatar daquele jeito -->
+            <p>{{ entryy.text | linebreaks }}</p>
+        </li>
+
+        {% empty %}
+        <li>
+            Nã há registro.
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

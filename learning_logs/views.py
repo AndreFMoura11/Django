@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Topic
 from .forms import TopicForm
+from django.http import HttpResponseRedirect 
+from django.urls import reverse
+
 def index(request):
     """Pagina principal do learning_log"""
     return render(request,'learning_logs/index.html')
@@ -25,3 +28,9 @@ def new_topic(request):
         form = TopicForm()
     else:   
         # Dados de POST  submetidos; processa os dados
+        if form.is_valid(): 
+            form.save()
+            return HttpResponseRedirect(reverse('topics'))
+        
+    context = {'form': form}
+    return render(request ,'learning_logs/new_topic.html',context)

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<p> <a href="{% url 'topic.id' topic.id %}">{{topic}}</a></p>
+<p> <a href="{% url 'topic' topic.id %}">{{ topic }}</a></p>
 <p> Adicione uma nova entrada:</P>
 
 <form action="{% url 'new_entry' topic.id %}" method="post"> 

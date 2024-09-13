@@ -37,16 +37,16 @@ def new_topic(request):
     return render(request ,'learning_logs/new_topic.html',context)
 
 def new_entry(request, topic_id):
-    topic = Topic.objects.get(id=topic_id)
+    topic = Topic.objects.get(id= topic_id) # Pegar a coluna especifica no banco de dados
 
     if request.method != 'POST':
         #  Nenhum dado submetido cria um formulario em branco
         form = EntryForm()
     else:
         # Dados de POST submetidos processa os dados
-        form = EntryForm(data=request.POST)
+        form = EntryForm(data= request.POST)
         if form.is_valid():
-            new_etry = form.save(commit=False)
+            new_entry = form.save(commit=False)
             new_entry.topic = topic
             new_entry.save()
             return HttpResponseRedirect(reverse('topic',args=[topic_id]))
